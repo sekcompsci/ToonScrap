@@ -52,7 +52,7 @@ app.get('/', function(req, res) {
     });
 
     try {
-        var html = template({ title: 'News' })
+        var html = template({ title: 'Home' })
         res.send(html)
     } catch (e) {
         next(e)
