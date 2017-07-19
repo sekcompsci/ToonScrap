@@ -1,64 +1,117 @@
+// Import Library //
+var express = require('express');
 var request = require('request');
 var cheerio = require('cheerio');
-var logger = require('morgan')
-var template = require('jade').compileFile(__dirname + '/source/templates/homepage.jade')
-var express = require('express');
+
+// Define Varriable //
 var app = express();
+var port = process.env.PORT || 7777;
 
-app.use(logger('dev'))
-app.use(express.static(__dirname + '/static'))
-
-app.get('/', function(req, res) {
-    url = 'http://www.niceoppai.net/';
-    console.log("Target : " + url);
+// Define type //
+app.get('/story', function(req, res) {
+    var url = 'http://www.niceoppai.net/';
 
     request(url, function(error, response, html) {
         if (!error) {
             var $ = cheerio.load(html);
-            var json = {};
-            var patern = {
-                "data": [
-                    {
-                        "img": "",
-                        "name": "",
-                        "link": "",
-                        "sec": [
-                            {
-                                "name": "",
-                                "link": "",
-                                "time": ""
-                            }
-                        ]
-                    }
-                ]
-            };
+            var cartoon = [];
 
             $('.grp').filter(function() {
-                var i = 1;
-
                 $(this).children('.row').each(function() {
-                    var img  = $(this).find('img').attr('src');
+                    var img = $(this).find('img').attr('src');
                     var name = $(this).find('.ttl').attr('title');
                     var link = $(this).find('.ttl').attr('href');
-                    console.log("img[" + i + "]  : " + img);
-                    console.log("name[" + i + "] : " + name);
-                    console.log("link[" + i + "] : " + link);
-                    console.log("");
 
-                    i++;
+                    cartoon.push({ 'name': name, 'img': img, 'link': link });
                 });
             })
+
+            res.json(cartoon);
         }
     });
+});
 
-    try {
-        var html = template({ title: 'Home' })
-        res.send(html)
-    } catch (e) {
-        next(e)
+app.get('/chapter/:name', function(req, res) {
+    var name = req.params.name;
+    var url = 'http://www.niceoppai.net/' + name;
+
+    request(url, function(error, response, html) {
+        if (!error) {
+            var $ = cheerio.load(html);
+            var cartoon = [];
+
+            $('.lst').filter(function() {
+                $(this).children('.lng_').each(function() {
+                    var link = $(this).find('a').attr('href');
+                    var name = $(this).find('.val').text();
+                    var date = $(this).find('.dte').text();
+
+                    cartoon.push({ 'name': name, 'link': link, 'date': date });
+                });
+            })
+
+            res.json(cartoon);
+        }
+    });
+});
+
+app.get('/view/:name/:chapter/:num?', function(req, res) {
+    var name = req.params.name;
+    var chapter = req.params.chapter;
+    var num;
+
+    if (req.params.num == undefined) {
+        num = 1;
+    } else {
+        num = req.params.num;
     }
-})
 
-app.listen(process.env.PORT || 3000, function () {
-    console.log('Listening on http://localhost:' + (process.env.PORT || 3000))
-})
+    var url = 'http://www.niceoppai.net/' + name + '/' + chapter + '/' + num;
+
+    request(url, function(error, response, html) {
+        if (!error) {
+            var $ = cheerio.load(html);
+            var cartoon = [];
+
+            $('.prw').filter(function() {
+                $(this).children('a').each(function() {
+                    var img = $(this).find('img').attr('src');
+
+                    cartoon.push({ 'img': img });
+                });
+            })
+
+            res.json(cartoon);
+        }
+    });
+});
+
+app.get('/viewall/:name/:chapter', function(req, res) {
+    var name = req.params.name;
+    var chapter = req.params.chapter;
+    var url = 'http://www.niceoppai.net/' + name + '/' + chapter + '/?all';
+
+    request(url, function(error, response, html) {
+        if (!error) {
+            var $ = cheerio.load(html);
+            var cartoon = [];
+
+            $('.mng_rdr').filter(function() {
+                $(this).children('center').each(function() {
+                    var img = $(this).find('img').attr('src');
+
+                    if (img != null) {
+                        cartoon.push({ 'img': img });
+                    }
+                });
+            })
+
+            res.json(cartoon);
+        }
+    });
+});
+
+// Running Server //
+app.listen(port, function() {
+    console.log('Starting node.js on port ' + port);
+});
