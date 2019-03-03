@@ -1,0 +1,9 @@
+{
+	"name": "toon-scrape",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"backend": "cd ./backend && yarn start",
+		"frontend": "cd ./frontend && yarn start"
+	}
+}
