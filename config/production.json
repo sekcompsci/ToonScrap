@@ -1,3 +1,4 @@
 {
-	"port": null
+	"port": 80,
+	"weburl": "http://www.niceoppai.net/"
 }
