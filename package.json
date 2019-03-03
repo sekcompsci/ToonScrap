@@ -7,7 +7,7 @@
 	"scripts": {
 		"dev": "nodemon app/server.js --exec babel-node",
 		"build": "yarn clean && babel -s true app -d build",
-		"start": "ls && node ./build/server.js",
+		"start": "yarn build && node ./build/server.js",
 		"clean": "rm -rf build/"
 	},
 	"dependencies": {
