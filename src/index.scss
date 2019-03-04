@@ -9,6 +9,12 @@ body {
 	padding: 10px;
 }
 
+.spin-container {
+	text-align: center;
+	padding: 30px 50px;
+	margin: 20px 0;
+}
+
 .card-cartoon {
 	.ant-card-body {
 		padding: 20px 10px;
@@ -19,5 +25,11 @@ body {
 		img {
 			height: 260px;
 		}
+	}
+}
+
+.cartoon-list {
+	.ant-list-item {
+		padding: 15px 10px;
 	}
 }

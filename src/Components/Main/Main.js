@@ -1,24 +1,31 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Row, Col, Card, Icon } from 'antd';
+import { Row, Col, Card, Icon, Spin } from 'antd';
 import { Link } from 'react-router-dom';
 import axios from '../../utils/axios';
 
 const { Meta } = Card;
 
-const Main = ({ history }) => {
+const renderLoading = (
+	<div className="spin-container">
+		<Spin />
+	</div>
+);
+
+const Main = () => {
 	const [ cartoons, setCartoons ] = useState([]);
+	const [ loading, setLoading ] = useState(true);
 
 	const getCartoons = async () => {
 		try {
 			let { data } = await axios.get('/all');
 
+			setLoading(false);
 			return setCartoons(data.data);
 		} catch (error) {
+			setLoading(false);
 			console.log(error);
 		}
 	};
-
-	const enterCartoon = (name) => () => history.push(`/${name}`);
 
 	useEffect(() => {
 		getCartoons();
@@ -28,6 +35,7 @@ const Main = ({ history }) => {
 		<Fragment>
 			<h1>การ์ตูนวันนี้</h1>
 			<Row gutter={16}>
+				{loading && renderLoading}
 				{cartoons.map((cartoon, index) => (
 					<Col key={`col-${index}`} span={12} style={{ marginBottom: 16 }}>
 						<Card
