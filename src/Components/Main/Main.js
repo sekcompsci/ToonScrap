@@ -30,7 +30,7 @@ const Main = () => {
 						<Card
 							className="card-cartoon"
 							cover={<img alt={cartoon.name} src={cartoon.img} />}
-							actions={[ <Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" /> ]}
+							actions={[ <Icon type="star" />, <Icon type="notification" />, <Icon type="share-alt" /> ]}
 						>
 							<Meta title={cartoon.name} />
 						</Card>
