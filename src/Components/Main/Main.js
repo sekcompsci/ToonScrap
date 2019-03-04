@@ -1,10 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Row, Col, Card, Icon } from 'antd';
+import { Link } from 'react-router-dom';
 import axios from '../../utils/axios';
 
 const { Meta } = Card;
 
-const Main = () => {
+const Main = ({ history }) => {
 	const [ cartoons, setCartoons ] = useState([]);
 
 	const getCartoons = async () => {
@@ -16,6 +17,8 @@ const Main = () => {
 			console.log(error);
 		}
 	};
+
+	const enterCartoon = (name) => () => history.push(`/${name}`);
 
 	useEffect(() => {
 		getCartoons();
@@ -29,10 +32,14 @@ const Main = () => {
 					<Col key={`col-${index}`} span={12} style={{ marginBottom: 16 }}>
 						<Card
 							className="card-cartoon"
-							cover={<img alt={cartoon.name} src={cartoon.img} />}
+							cover={
+								<Link to={`/${cartoon.link}`}>
+									<img alt={cartoon.name} src={cartoon.img} />
+								</Link>
+							}
 							actions={[ <Icon type="star" />, <Icon type="notification" />, <Icon type="share-alt" /> ]}
 						>
-							<Meta title={cartoon.name} />
+							<Meta title={<Link to={`/${cartoon.link}`}>{cartoon.name}</Link>} />
 						</Card>
 					</Col>
 				))}
