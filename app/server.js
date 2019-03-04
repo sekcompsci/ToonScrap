@@ -1,6 +1,7 @@
 // Import dependency //
 import koa from 'koa';
 import router from 'koa-route';
+import cors from '@koa/cors';
 import config from 'config';
 
 // Import module //
@@ -12,6 +13,7 @@ const port = process.env.PORT || config.get('port');
 
 // Router //
 app
+	.use(cors()) // use middleware
 	.use(router.get('/api/all', getAll))
 	.use(router.get('/api/:name', getWithTitle))
 	.use(router.get('/api/:name/:chapter', getWithTitleAndChapter))
