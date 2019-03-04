@@ -8,11 +8,13 @@ const Main = () => {
 	const [ cartoons, setCartoons ] = useState([]);
 
 	const getCartoons = async () => {
-		let res = await axios.get('/all');
+		try {
+			let { data } = await axios.get('/all');
 
-		console.log(res);
-
-		return setCartoons(res.data.data);
+			return setCartoons(data.data);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	useEffect(() => {
@@ -23,10 +25,10 @@ const Main = () => {
 		<Fragment>
 			<h1>การ์ตูนวันนี้</h1>
 			<Row gutter={16}>
-				{cartoons.map((cartoon) => (
-					<Col key={`col-${cartoon.id}`} span={12} style={{ marginBottom: 16 }}>
+				{cartoons.map((cartoon, index) => (
+					<Col key={`col-${index}`} span={12} style={{ marginBottom: 16 }}>
 						<Card
-							style={{ width: '100%' }}
+							className="card-cartoon"
 							cover={<img alt={cartoon.name} src={cartoon.img} />}
 							actions={[ <Icon type="setting" />, <Icon type="edit" />, <Icon type="ellipsis" /> ]}
 						>

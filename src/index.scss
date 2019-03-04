@@ -8,3 +8,16 @@ body {
 		"Droid Sans", "Helvetica Neue", sans-serif;
 	padding: 10px;
 }
+
+.card-cartoon {
+	.ant-card-body {
+		padding: 20px 10px;
+	}
+
+	.ant-card-cover {
+		background-color: gainsboro;
+		img {
+			height: 260px;
+		}
+	}
+}
