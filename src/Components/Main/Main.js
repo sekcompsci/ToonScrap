@@ -1,33 +1,22 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Row, Col, Card, Icon } from 'antd';
+import axios from '../../utils/axios';
 
 const { Meta } = Card;
 
 const Main = () => {
 	const [ cartoons, setCartoons ] = useState([]);
 
-	const getCartoons = () => {
-		return [
-			{
-				id: '1',
-				name: 'test1',
-				img: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
-			},
-			{
-				id: '2',
-				name: 'test2',
-				img: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
-			},
-			{
-				id: '3',
-				name: 'test3',
-				img: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'
-			}
-		];
+	const getCartoons = async () => {
+		let res = await axios.get('/all');
+
+		console.log(res);
+
+		return setCartoons(res.data.data);
 	};
 
 	useEffect(() => {
-		setCartoons(getCartoons);
+		getCartoons();
 	}, []);
 
 	return (
