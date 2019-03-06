@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { List, Skeleton } from 'antd';
+import { List } from 'antd';
 import { Link } from 'react-router-dom';
 import axios from '../../utils/axios';
 
@@ -7,7 +7,7 @@ const Name = ({ match }) => {
 	const [ cartoons, setCartoons ] = useState([]);
 	const [ loading, setLoading ] = useState(true);
 
-	const getCartoonsName = async () => {
+	const getCartoonName = async () => {
 		try {
 			let { data } = await axios.get(`/${match.params.name}`);
 
@@ -22,7 +22,7 @@ const Name = ({ match }) => {
 	};
 
 	useEffect(() => {
-		getCartoonsName();
+		getCartoonName();
 	}, []);
 
 	return (
@@ -35,12 +35,10 @@ const Name = ({ match }) => {
 				dataSource={cartoons}
 				loading={loading}
 				renderItem={(item) => (
-					<Skeleton avatar title={false} loading={item.loading} active>
-						<List.Item>
-							<Link to={`/${match.params.name}/${item.link.split('/')[4]}`}>{item.name}</Link>
-							<span>{item.date}</span>
-						</List.Item>
-					</Skeleton>
+					<List.Item>
+						<Link to={`/${match.params.name}/${item.link.split('/')[4]}`}>{item.name}</Link>
+						<span>{item.date}</span>
+					</List.Item>
 				)}
 			/>
 		</Fragment>
