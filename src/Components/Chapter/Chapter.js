@@ -32,7 +32,7 @@ const Chapter = ({ match }) => {
 				loading={loading}
 				header={
 					<Fragment>
-						<h1>
+						<h1 className="ant-card-meta-title">
 							{match.params.name}
 							<small> ตอน : {match.params.chapter}</small>
 						</h1>

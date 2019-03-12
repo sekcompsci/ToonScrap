@@ -28,7 +28,7 @@ const Name = ({ match }) => {
 	return (
 		<Fragment>
 			<BackTop />
-			<h1>{match.params.name}</h1>
+			<h1 className="ant-card-meta-title">{match.params.name}</h1>
 			<List
 				bordered
 				size="large"
