@@ -1,8 +1,11 @@
-import axios from 'axios';
+import { setup } from 'axios-cache-adapter';
 
-const instance = axios.create({
+const axios = setup({
 	baseURL: 'https://toon-scrape.herokuapp.com/api',
-	timeout: 10000
+	timeout: 20000,
+	cache: {
+		maxAge: 15 * 60 * 1000
+	}
 });
 
-export default instance;
+export default axios;
