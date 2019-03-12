@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { List } from 'antd';
+import { List, BackTop } from 'antd';
 import { Link } from 'react-router-dom';
 import axios from '../../utils/axios';
 
@@ -27,6 +27,7 @@ const Name = ({ match }) => {
 
 	return (
 		<Fragment>
+			<BackTop />
 			<h1>{match.params.name}</h1>
 			<List
 				bordered

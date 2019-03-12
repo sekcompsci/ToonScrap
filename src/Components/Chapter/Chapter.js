@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { List } from 'antd';
+import { List, BackTop } from 'antd';
 import axios from '../../utils/axios';
 
 const Chapter = ({ match }) => {
@@ -25,23 +25,28 @@ const Chapter = ({ match }) => {
 	}, []);
 
 	return (
-		<List
-			bordered
-			loading={loading}
-			header={
-				<Fragment>
-					<b>{match.params.name}</b>
-					<span> ตอน : {match.params.chapter}</span>
-				</Fragment>
-			}
-			dataSource={cartoons}
-			className="cartoon-img"
-			renderItem={(item, index) => (
-				<List.Item>
-					<img src={item.img} alt={match.params.name + '/' + index} />
-				</List.Item>
-			)}
-		/>
+		<Fragment>
+			<BackTop />
+			<List
+				bordered
+				loading={loading}
+				header={
+					<Fragment>
+						<h1>
+							{match.params.name}
+							<small> ตอน : {match.params.chapter}</small>
+						</h1>
+					</Fragment>
+				}
+				dataSource={cartoons}
+				className="cartoon-img"
+				renderItem={(item, index) => (
+					<List.Item>
+						<img src={item.img} alt={match.params.name + '/' + index} />
+					</List.Item>
+				)}
+			/>
+		</Fragment>
 	);
 };
 

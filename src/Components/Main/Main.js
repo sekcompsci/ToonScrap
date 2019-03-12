@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Row, Col, Card, Icon, Spin } from 'antd';
+import { Row, Col, Card, Icon, Spin, BackTop } from 'antd';
 import { Link } from 'react-router-dom';
 import axios from '../../utils/axios';
 
@@ -33,7 +33,8 @@ const Main = () => {
 
 	return (
 		<Fragment>
-			<h1>การ์ตูนวันนี้</h1>
+			<BackTop />
+			<h1>อัพเดตล่าสุด</h1>
 			<Row gutter={16}>
 				{loading && renderLoading}
 				{cartoons.map((cartoon, index) => (
@@ -45,7 +46,7 @@ const Main = () => {
 									<img alt={cartoon.name} src={cartoon.img} />
 								</Link>
 							}
-							actions={[ <Icon type="star" />, <Icon type="notification" />, <Icon type="share-alt" /> ]}
+							actions={[ <Icon type="star" />, <Icon type="share-alt" /> ]}
 						>
 							<Meta title={<Link to={`/${cartoon.link}`}>{cartoon.name}</Link>} />
 						</Card>
