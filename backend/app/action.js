@@ -110,7 +110,7 @@ const getWithTitleAndChapter = async (ctx, name, chapter) => {
 		let cartoon = [];
 
 		// filter spacific eliment
-		$('.mng_rdr').filter(function() {
+		$('#image-container').filter(function() {
 			$(this).children('center').each(function() {
 				let img = $(this).find('img').attr('src');
 
