@@ -6,6 +6,7 @@
 	"license": "ISC",
 	"scripts": {
 		"preinstall": "cd ./backend && npm install",
-		"build": "cd ./backend && npm run build"
+		"build": "cd ./backend && npm run build",
+		"start": "cd ./backend && npm run start"
 	}
 }
