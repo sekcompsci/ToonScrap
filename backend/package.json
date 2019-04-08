@@ -6,8 +6,8 @@
 	"license": "ISC",
 	"scripts": {
 		"dev": "nodemon app/server.js --exec babel-node",
-		"build": "yarn clean && babel -s true app -d build",
-		"start": "yarn build && node ./build/server.js",
+		"build": "npm run clean && babel -s true app -d build",
+		"start": "npm run build && node ./build/server.js",
 		"clean": "rm -rf build/"
 	},
 	"dependencies": {
