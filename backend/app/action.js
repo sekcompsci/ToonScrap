@@ -28,7 +28,7 @@ const getAll = async (ctx) => {
 				let name = $(this).find('.ttl').attr('title');
 				let link = $(this).find('.ttl').attr('href');
 
-				img = img.replace(/36/, 200);
+				img = img.replace(/36/, 350);
 				link = link.split('/');
 
 				cartoon.push({ name, img, link: link[3] });
