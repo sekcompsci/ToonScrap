@@ -2,55 +2,55 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit');
 
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-	padding: 10px;
-	font-family: 'Kanit', -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-		"Droid Sans", "Helvetica Neue", sans-serif;
+    padding: 10px;
+    font-family: 'Kanit', -apple-system, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+        'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 .spin-container {
-	text-align: center;
-	padding: 30px 50px;
-	margin: 20px 0;
+    text-align: center;
+    padding: 30px 50px;
+    margin: 20px 0;
 }
 
 .card-cartoon {
-	.ant-card-body {
-		padding: 20px 10px;
-	}
+    .ant-card-body {
+        padding: 20px 10px;
+    }
 
-	.ant-card-cover {
-		background-color: rgb(245, 245, 245);
-		img {
-			height: 260px;
-			width: 100%;
-		}
-	}
+    .ant-card-cover {
+        background-color: rgb(245, 245, 245);
+        img {
+            height: 260px;
+            width: 100%;
+        }
+    }
 }
 
 .cartoon-list {
-	.ant-list-item {
-		padding: 15px 10px;
-		.ant-list-item-content {
-			display: flex;
-			justify-content: space-between;
-		}
-	}
+    .ant-list-item {
+        padding: 15px 10px;
+        .ant-list-item-content {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
 }
 
 .cartoon-img {
-	.ant-list-item {
-		padding: 0;
-		.ant-list-item-content {
-			display: flex;
-			img {
-				width: 100%;
-				height: 100%;
-			}
-		}
-	}
+    .ant-list-item {
+        padding: 0;
+        .ant-list-item-content {
+            display: flex;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
 }

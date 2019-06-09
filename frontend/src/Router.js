@@ -8,13 +8,13 @@ import Chapter from './components/Chapter';
 // Route Components
 // use component with path url
 const Router = () => (
-	<BrowserRouter>
-		<Switch>
-			<Route exact path="/" component={Main} />
-			<Route exact path="/:name" component={Name} />
-			<Route exact path="/:name/:chapter" component={Chapter} />
-		</Switch>
-	</BrowserRouter>
+    <BrowserRouter>
+        <Switch>
+            <Route exact path="/" component={Main} />
+            <Route exact path="/:name" component={Name} />
+            <Route exact path="/:name/:chapter" component={Chapter} />
+        </Switch>
+    </BrowserRouter>
 );
 
 export default Router;
