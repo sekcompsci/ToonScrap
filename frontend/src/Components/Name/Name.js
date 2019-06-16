@@ -23,7 +23,7 @@ const Name = ({ match }) => {
 
     useEffect(() => {
         getCartoonName();
-    }, []);
+    });
 
     return (
         <Fragment>
