@@ -22,7 +22,7 @@ const Chapter = ({ match }) => {
 
     useEffect(() => {
         getCartoonChapter();
-    }, []);
+    });
 
     return (
         <Fragment>
