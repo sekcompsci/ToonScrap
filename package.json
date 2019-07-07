@@ -1,12 +1,22 @@
 {
-	"name": "toon-scrape",
-	"version": "1.2.0",
-	"description": "Scrape web cartoon to new web.",
-	"author": "MrNiranam",
-	"license": "ISC",
-	"scripts": {
-		"preinstall": "cd ./backend && npm install",
-		"build": "cd ./backend && npm run build",
-		"start": "cd ./backend && npm run start"
-	}
+    "name": "toon-scrape",
+    "version": "1.2.0",
+    "description": "Scrape web cartoon to new web.",
+    "author": "MrNiranam",
+    "license": "MIT",
+    "scripts": {
+        "postinstall": "run-p install:**",
+        "postinstall:frontend": "cd frontend && npm install",
+        "postinstall:functions": "cd functions && npm install",
+        "build": "run-p build:**",
+        "build:frontend": "cd frontend && npm run build",
+        "build:functions": "netlify-lambda build functions/src",
+        "start": "run-p start:**",
+        "start:frontend": "cd frontend && npm run start",
+        "start:functions": "netlify-lambda serve functions/src"
+    },
+    "devDependencies": {
+        "netlify-lambda": "^1.4.5",
+        "npm-run-all": "^4.1.5"
+    }
 }

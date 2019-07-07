@@ -1,35 +1,36 @@
 {
-	"name": "toon-scrape-frontend",
-	"version": "1.0.1",
-	"private": true,
-	"description": "Scrape web cartoon to new web.",
-	"author": "MrNiranam",
-	"license": "MIT",
-	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
-	},
-	"dependencies": {
-		"antd": "^3.14.1",
-		"axios": "^0.18.0",
-		"axios-cache-adapter": "^2.3.0",
-		"node-sass": "^4.11.0",
-		"react": "^16.8.3",
-		"react-dom": "^16.8.3",
-		"react-router-dom": "^4.3.1"
-	},
-	"devDependencies": {
-		"react-scripts": "^3.0.1"
-	},
-	"eslintConfig": {
-		"extends": "react-app"
-	},
-	"browserslist": [
-		">0.2%",
-		"not dead",
-		"not ie <= 11",
-		"not op_mini all"
-	]
+    "name": "toon-scrape-frontend",
+    "version": "1.0.1",
+    "private": true,
+    "description": "Scrape web cartoon to new web.",
+    "author": "MrNiranam",
+    "license": "MIT",
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "clean": "rm -rf dist/"
+    },
+    "dependencies": {
+        "antd": "^3.14.1",
+        "axios": "^0.18.0",
+        "axios-cache-adapter": "^2.3.0",
+        "node-sass": "^4.11.0",
+        "react": "^16.8.3",
+        "react-dom": "^16.8.3",
+        "react-router-dom": "^4.3.1"
+    },
+    "devDependencies": {
+        "react-scripts": "^3.0.1"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ]
 }
