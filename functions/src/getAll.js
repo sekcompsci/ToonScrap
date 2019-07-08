@@ -1,10 +1,12 @@
 import request from 'request-promise';
 import cheerio from 'cheerio';
 
-export async function handler(event, context) {
+const weburl = 'http://www.niceoppai.net/';
+
+export async function handler(event, context, callback) {
     try {
         const $ = await request({
-            uri: config.get('weburl'),
+            uri: weburl,
             transform: body => cheerio.load(body)
         });
 
@@ -30,14 +32,15 @@ export async function handler(event, context) {
 
                     cartoon.push({ name, img, link: link[3] });
                 });
-
-            return {
-                statusCode: 200,
-                body: JSON.stringify({ status: 200, data: cartoon })
-            };
         });
+
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ status: 200, data: cartoon })
+        };
     } catch (err) {
         console.log(err);
+
         return {
             statusCode: 500,
             body: JSON.stringify({ status: 500, data: err.message })
