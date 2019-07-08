@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Main from './components/Main';
-import Name from './components/Name';
-import Chapter from './components/Chapter';
+import Main from './Components/Main';
+import Name from './Components/Name';
+import Chapter from './Components/Chapter';
 
 // Route Components
 // use component with path url

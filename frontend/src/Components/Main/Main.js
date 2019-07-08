@@ -17,7 +17,7 @@ const Main = () => {
 
     const getCartoons = async () => {
         try {
-            let { data } = await axios.get('/all');
+            let { data } = await axios.get('/getAll');
 
             setLoading(false);
             return setCartoons(data.data);
